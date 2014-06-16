@@ -27,6 +27,17 @@ namespace SportsTimeMachineMovie.IO
         /// </summary>
 		private Stream stream;
 
+
+        /// <summary>
+        /// ファイルパスからReaderを構築する.
+        /// </summary>
+        /// <param name="filename"></param>
+        public UnitReader(String filepath)
+            : this(new FileStream(filepath, FileMode.Open))
+        {
+
+        }
+
 		/// <summary>
 		/// ストリームからReaderを構築する.
 		/// </summary>

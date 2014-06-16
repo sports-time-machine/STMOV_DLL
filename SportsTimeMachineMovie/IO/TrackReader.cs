@@ -15,7 +15,15 @@ namespace SportsTimeMachineMovie.IO
     /// </summary>
     public class TrackReader : IDisposable
     {       
-        private const int BUFFER_SIZE = 2097152;
+        /// <summary>
+        /// 読み込むバッファのデフォルトサイズ.
+        /// </summary>
+        private const int DEFAULT_BUFFER_SIZE = 2097152;
+
+        /// <summary>
+        /// 読み込み時のバッファのサイズを取得設定する.
+        /// </summary>
+        public int BufferSize { get; set; }
 
         /// <summary>
         /// インスタンスが破棄されたかどうか.
@@ -39,6 +47,15 @@ namespace SportsTimeMachineMovie.IO
 
 
         /// <summary>
+        /// ファイルパスからReaderを構築する.
+        /// </summary>
+        /// <param name="filename"></param>
+        public TrackReader(String filepath)
+            :this(new FileStream(filepath, FileMode.Open))
+        {
+        }
+
+        /// <summary>
         /// ストリームからReaderを構築する.
         /// </summary>
         /// <param name="stream"></param>
@@ -46,6 +63,7 @@ namespace SportsTimeMachineMovie.IO
         {
             disposed = false;
             this.stream = stream;
+            BufferSize = DEFAULT_BUFFER_SIZE;
         }
 
         /// <summary>
@@ -66,9 +84,9 @@ namespace SportsTimeMachineMovie.IO
                     long maxLength = zipInputStream.Length;
                     using (MemoryStream unitStream = new MemoryStream())
                     {
-                        byte[] buffer = new byte[BUFFER_SIZE];
+                        byte[] buffer = new byte[BufferSize];
                         int len;
-                        while ((len = zipInputStream.Read(buffer, 0, BUFFER_SIZE)) > 0)
+                        while ((len = zipInputStream.Read(buffer, 0, BufferSize)) > 0)
                         {
                             unitStream.Write(buffer, 0, len);
                             int progress = (int)((unitStream.Length / (float)maxLength) * (100.0f / (float)Track.MAX_UNIT) + (100.0f / (float)Track.MAX_UNIT) * i);
