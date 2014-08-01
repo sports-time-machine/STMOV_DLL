@@ -1,11 +1,11 @@
 using System;
-using UnityEngine;
 using System.Collections.Generic;
-using SportsTimeMachineMovie.Data.Depth;
-using SportsTimeMachineMovie.Data.Formats;
-using SportsTimeMachineMovie.Data.Status;
+using SportsTimeMachine.Data.Depth;
+using SportsTimeMachine.Data.Formats;
+using SportsTimeMachine.Data.Status;
+using SportsTimeMachine.Data.Commons;
 
-namespace SportsTimeMachineMovie.Data.Transformer
+namespace SportsTimeMachine.Data.Transformer
 {
 	/// <summary>
 	/// 深度情報を三次元ボクセル情報に変換するクラス.

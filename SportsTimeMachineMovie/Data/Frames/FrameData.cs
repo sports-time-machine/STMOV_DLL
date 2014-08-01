@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using UnityEngine;
-using SportsTimeMachineMovie.Data.Formats;
-using SportsTimeMachineMovie.Data.Transformer;
-using SportsTimeMachineMovie.Data.Units;
+using SportsTimeMachine.Data.Formats;
+using SportsTimeMachine.Data.Transformer;
+using SportsTimeMachine.Data.Units;
 
-namespace SportsTimeMachineMovie.Data.Frames{
+namespace SportsTimeMachine.Data.Frames{
 
 	/// <summary>
 	/// フレーム情報を扱うクラス.

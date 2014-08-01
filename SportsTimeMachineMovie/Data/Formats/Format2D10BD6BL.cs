@@ -1,11 +1,11 @@
 using System;
 using System.IO;
-using UnityEngine;
 using System.Collections.Generic;
-using SportsTimeMachineMovie.IO;
-using SportsTimeMachineMovie.Data.Depth;
+using SportsTimeMachine.IO;
+using SportsTimeMachine.Data.Depth;
+using SportsTimeMachine.Data.Commons;
 
-namespace SportsTimeMachineMovie.Data.Formats
+namespace SportsTimeMachine.Data.Formats
 {
 	/// <summary>
 	/// フォーマット depth 2d 10b/6b でランレングス圧縮されたデータを表すクラス.

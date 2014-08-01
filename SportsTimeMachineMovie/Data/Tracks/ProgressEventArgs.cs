@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SportsTimeMachineMovie.Data.Tracks
+namespace SportsTimeMachine.Data.Tracks
 {
     public class ProgressEventArgs : EventArgs
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SportsTimeMachineMovie.Data.Status
+namespace SportsTimeMachine.Data.Status
 {
     /// <summary>
     /// ユニット関連の情報を格納するクラス.

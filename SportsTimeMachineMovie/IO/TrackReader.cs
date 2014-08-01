@@ -1,6 +1,6 @@
 ﻿using ICSharpCode.SharpZipLib.Zip;
-using SportsTimeMachineMovie.Data.Tracks;
-using SportsTimeMachineMovie.Data.Units;
+using SportsTimeMachine.Data.Tracks;
+using SportsTimeMachine.Data.Units;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace SportsTimeMachineMovie.IO
+namespace SportsTimeMachine.IO
 {
     /// <summary>
     /// トラックデータを読み取るクラス.

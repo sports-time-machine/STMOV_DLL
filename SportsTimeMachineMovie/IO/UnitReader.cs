@@ -1,16 +1,16 @@
-using UnityEngine;
 using System;
 using System.IO;
 using System.Collections.Generic;
-using SportsTimeMachineMovie.Data.Depth;
-using SportsTimeMachineMovie.Data.Formats;
-using SportsTimeMachineMovie.Data.Transformer;
-using SportsTimeMachineMovie.Data.Status;
-using SportsTimeMachineMovie.Data.Frames;
+using SportsTimeMachine.Data.Depth;
+using SportsTimeMachine.Data.Formats;
+using SportsTimeMachine.Data.Transformer;
+using SportsTimeMachine.Data.Status;
+using SportsTimeMachine.Data.Frames;
 using System.Text;
-using SportsTimeMachineMovie.Data.Units;
+using SportsTimeMachine.Data.Units;
+using SportsTimeMachine.Data.Commons;
 
-namespace SportsTimeMachineMovie.IO
+namespace SportsTimeMachine.IO
 {
 	/// <summary>
 	/// stmovデータからデータを読み取るクラス.

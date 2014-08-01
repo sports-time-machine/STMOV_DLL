@@ -1,11 +1,11 @@
-﻿using SportsTimeMachineMovie.Data.Status;
-using SportsTimeMachineMovie.Data.Units;
+﻿using SportsTimeMachine.Data.Status;
+using SportsTimeMachine.Data.Units;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SportsTimeMachineMovie.Data.Tracks
+namespace SportsTimeMachine.Data.Tracks
 {
     public class Track
     {

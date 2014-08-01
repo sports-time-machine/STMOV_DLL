@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace SportsTimeMachineMovie.Data.Depth
+namespace SportsTimeMachine.Data.Depth
 {
 	/// <summary>
 	/// カメラが投影されるスクリーン上の深度情報を表す.

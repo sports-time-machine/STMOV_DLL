@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using SportsTimeMachineMovie.Data.Depth;
+using SportsTimeMachine.Data.Depth;
 
-namespace SportsTimeMachineMovie.Data.Formats
+namespace SportsTimeMachine.Data.Formats
 {
 	/// <summary>
 	/// 深度情報圧縮フォーマットの抽象クラス.

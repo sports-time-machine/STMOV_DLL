@@ -1,6 +1,6 @@
 using System;
 
-namespace SportsTimeMachineMovie.Data.Formats
+namespace SportsTimeMachine.Data.Formats
 {
 
 	/// <summary>

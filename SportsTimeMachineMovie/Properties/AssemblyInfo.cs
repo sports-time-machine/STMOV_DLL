@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // アセンブリに関する一般情報は以下の属性セットをとおして制御されます。
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
-[assembly: AssemblyTitle("SportsTimeMachineMovie")]
+[assembly: AssemblyTitle("SportsTimeMachine")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("UNITCOM PC")]
-[assembly: AssemblyProduct("SportsTimeMachineMovie")]
+[assembly: AssemblyProduct("SportsTimeMachine")]
 [assembly: AssemblyCopyright("Copyright © UNITCOM PC 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

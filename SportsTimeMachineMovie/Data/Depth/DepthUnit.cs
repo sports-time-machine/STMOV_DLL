@@ -1,7 +1,7 @@
 using System;
-using SportsTimeMachineMovie.Data.Depth;
+using SportsTimeMachine.Data.Depth;
 
-namespace SportsTimeMachineMovie.Data.Depth
+namespace SportsTimeMachine.Data.Depth
 {
 
 	/// <summary>

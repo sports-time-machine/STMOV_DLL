@@ -1,14 +1,13 @@
-﻿using SportsTimeMachineMovie.Data.Frames;
-using SportsTimeMachineMovie.Data.Status;
-using SportsTimeMachineMovie.IO;
+﻿using SportsTimeMachine.Data.Frames;
+using SportsTimeMachine.Data.Status;
+using SportsTimeMachine.IO;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using UnityEngine;
 
-namespace SportsTimeMachineMovie.Data.Units
+namespace SportsTimeMachine.Data.Units
 {
     /// <summary>
     /// スポーツタイムマシンユニットデータを表す.

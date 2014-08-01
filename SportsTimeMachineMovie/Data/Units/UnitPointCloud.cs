@@ -1,10 +1,10 @@
-﻿using System;
+﻿using SportsTimeMachine.Data.Commons;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UnityEngine;
 
-namespace SportsTimeMachineMovie.Data.Units
+namespace SportsTimeMachine.Data.Units
 {
     /// <summary>
     /// ユニットでの点群.
