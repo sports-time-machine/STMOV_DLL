@@ -8,7 +8,7 @@ namespace SportsTimeMachine.Data.Commons
     /// <summary>
     /// 行列を表すクラス.
     /// </summary>
-    public class Matrix4x4
+    public class Matrix4x4 : IEquatable<Matrix4x4>
     {
         public float[,] m;
 
@@ -54,6 +54,34 @@ namespace SportsTimeMachine.Data.Commons
         }
 
         /// <summary>
+        /// すべての行列の要素が等しければ等しい.
+        /// </summary>
+        public override bool Equals(Object obj)
+        {
+            Matrix4x4 mat = obj as Matrix4x4;
+            if (mat == null) return false;
+            return Equals((Matrix4x4)mat);
+        }
+
+        /// <summary>
+        /// すべての行列の要素が等しければ等しい.
+        /// </summary>
+        public bool Equals(Matrix4x4 other)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (m[i, j] != other.m[i, j])
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
         /// 掛け算する.
         /// </summary>
         public static Matrix4x4 operator* (Matrix4x4 left, Matrix4x4 right)
@@ -75,7 +103,10 @@ namespace SportsTimeMachine.Data.Commons
         }
 
         /// <summary>
-        /// 掛け算する.本来は計算できないが、入れ替えて計算する.
+        /// 掛け算する.
+        /// 4*4行列×4*1行列は本来計算できないが、
+        /// 4*1行列×4*4行列に
+        /// 入れ替えて計算する.
         /// </summary>
         public static Vector4 operator *(Matrix4x4 left, Vector4 right)
         {

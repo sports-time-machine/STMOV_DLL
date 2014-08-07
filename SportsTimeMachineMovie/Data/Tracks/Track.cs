@@ -1,4 +1,5 @@
-﻿using SportsTimeMachine.Data.Status;
+﻿using SportsTimeMachine.Data.Commons;
+using SportsTimeMachine.Data.Status;
 using SportsTimeMachine.Data.Units;
 using System;
 using System.Collections.Generic;
@@ -46,20 +47,43 @@ namespace SportsTimeMachine.Data.Tracks
         }
 
         /// <summary>
-        /// 指定してフレームのに点群データを取得する.
-        /// 該当するフレームがない場合、null.
+        /// 指定したフレームのユニットごとの点群データを取得する.
         /// </summary>
         /// <returns></returns>
-        public TrackPointCloud GetTrackPointCloud(int frame)
+        public List<UnitPointCloud> GetUnitsPointCloud(int frame)
         {
             List<UnitPointCloud> pointClouds = new List<UnitPointCloud>(MAX_UNIT);
             foreach (Unit unit in units)
             {
                 UnitPointCloud pointCloud = unit.GetUnitPointCloud(frame);
-                if (pointCloud == null) return null;
                 pointClouds.Add(pointCloud);
             }
-            return new TrackPointCloud(pointClouds);
+            return pointClouds;
+        }
+
+        /// <summary>
+        /// 指定したフレームのトラックの点群データを取得する.
+        /// </summary>
+        /// <returns></returns>
+        public List<Vector3> GetTrackPointCloud(int frame)
+        {
+            List<UnitPointCloud> unitsPointClouds = GetUnitsPointCloud(frame);
+            List<Vector3> trackPointCloud = new List<Vector3>();
+
+            for (int i = 0; i < MAX_UNIT; i++)
+            {
+                if (unitsPointClouds[i] != null)
+                {
+                    for (int j = 0; j < unitsPointClouds[i].VectorList.Count; j++)
+                    {
+                        Vector3 vec = unitsPointClouds[i].VectorList[j];
+                        vec.x += i * 320.0f;
+                        trackPointCloud.Add(vec);
+                    }
+                }
+            }
+
+            return trackPointCloud;
         }
 
 

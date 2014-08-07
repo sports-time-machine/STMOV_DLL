@@ -11,9 +11,9 @@ namespace SportsTimeMachine.Data.Status
     internal class UnitStatus
     {
 
-        public int TotalFrameCount;
+        public int TotalFrameCount { get; private set; }
 
-        public int TotalTime;
+        public int TotalTime { get; private set; }
 
         /// <summary>
         /// 総フレーム数、総ミリ秒から構築

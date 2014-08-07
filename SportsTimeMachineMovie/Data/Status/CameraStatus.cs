@@ -66,7 +66,7 @@ namespace SportsTimeMachine.Data.Status
 					0, cos, -sin, 0,
 					0, sin, cos,  0,
 					0,  0,    0,  1
-				) * mat;
+				) * mat; 
 
 			// Y軸回転
 			cos = (float)Math.Cos(Rotation.y);
@@ -96,14 +96,16 @@ namespace SportsTimeMachine.Data.Status
 					Scale.x,0,0,0,
 					0,Scale.y,0,0,
 					0,0,Scale.z,0,
-					0,0,0,1) * mat;
+					0,0,0,1
+                    ) * mat;
 
 			mat =
                 new Matrix4x4(
 					1,0,0,Position.x,
 					0,1,0,Position.y,
 					0,0,1,Position.z,
-					0,0,0,1) * mat;
+					0,0,0,1
+                    ) * mat;
 			return mat;
 		}
 	}

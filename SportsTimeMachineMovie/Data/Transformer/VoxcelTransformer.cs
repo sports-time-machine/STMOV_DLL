@@ -9,7 +9,8 @@ namespace SportsTimeMachine.Data.Transformer
 {
 	/// <summary>
 	/// 深度情報を三次元ボクセル情報に変換するクラス.
-	/// カメラ2台で1つのスクリーンを投影させる標準的なスポーツタイムマシンの記録形式の変換を行う.
+	/// カメラ2台で1つのスクリーンを投影させる標準的な
+    /// スポーツタイムマシンの記録形式の変換を行う.
 	/// </summary>
     internal class VoxcelTransformer
 	{
@@ -52,7 +53,6 @@ namespace SportsTimeMachine.Data.Transformer
 		public List<Vector3> GetVocelList(DepthUnit unit)
 		{
 			List<Vector3> voxcels = new List<Vector3>();
-		
 			voxcels.AddRange(GetScreenVoxcels(camera1Info, unit.LeftScreen));
 			voxcels.AddRange(GetScreenVoxcels(camera2Info, unit.RightScreen));
 			return voxcels;
@@ -66,7 +66,6 @@ namespace SportsTimeMachine.Data.Transformer
 		/// <param name="depthList">深度情報のリスト.</param>
         private List<Vector3> GetScreenVoxcels(CameraStatus camera, DepthScreen screen)
         {
-
 			int screenDepthCount = screen.DepthList.Count;
 			List<Vector3> voxcels = new List<Vector3>(screenDepthCount);
 			Matrix4x4 camMatrix = camera.GetMatrix();

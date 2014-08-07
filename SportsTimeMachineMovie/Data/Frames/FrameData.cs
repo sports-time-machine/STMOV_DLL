@@ -4,6 +4,7 @@ using System.IO;
 using SportsTimeMachine.Data.Formats;
 using SportsTimeMachine.Data.Transformer;
 using SportsTimeMachine.Data.Units;
+using SportsTimeMachine.Data.Commons;
 
 namespace SportsTimeMachine.Data.Frames{
 
@@ -40,6 +41,7 @@ namespace SportsTimeMachine.Data.Frames{
 		/// </summary>
 		/// <param name="bytes">フレーム情報バイト列.</param>
 		/// <param name="format">圧縮フォーマット.</param>
+        /// <param name="transformer">ボクセル変換方法.</param>
 		public FrameData (byte[] bytes, CompressFormat format, VoxcelTransformer transformer)
 		{
 			this.bytes = bytes;
@@ -52,8 +54,9 @@ namespace SportsTimeMachine.Data.Frames{
 		/// 圧縮されたフレーム情報を解凍し,点群リストを作成する.
 		/// </summary>
 		/// <returns>The point cloud.</returns>
-		public UnitPointCloud GetUnitPointCloud(){
-			return new UnitPointCloud(transformer.GetVocelList(format.Decompress(bytes)));
+        public UnitPointCloud GetUnitPointCloud()
+        {
+            return new UnitPointCloud(transformer.GetVocelList(format.Decompress(bytes)));
 		}
 	}
 }

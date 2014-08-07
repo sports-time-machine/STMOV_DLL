@@ -5,24 +5,22 @@ using System.Runtime.InteropServices;
 // アセンブリに関する一般情報は以下の属性セットをとおして制御されます。
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
-[assembly: AssemblyTitle("SportsTimeMachine")]
+[assembly: AssemblyTitle("SportsTimeMachineTest")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("UNITCOM PC")]
-[assembly: AssemblyProduct("SportsTimeMachine")]
-[assembly: AssemblyCopyright("Copyright © UNITCOM PC 2014")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SportsTimeMachineTest")]
+[assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: InternalsVisibleTo("SportsTimeMachineTest")]
-
 
 // ComVisible を false に設定すると、その型はこのアセンブリ内で COM コンポーネントから 
-// 参照不可能になります。COM からこのアセンブリ内の型にアクセスする場合は、
+// 参照できなくなります。このアセンブリ内で COM から型にアクセスする必要がある場合は、 
 // その型の ComVisible 属性を true に設定してください。
 [assembly: ComVisible(false)]
 
-// 次の GUID は、このプロジェクトが COM に公開される場合の、typelib の ID です
-[assembly: Guid("3e637691-5ab7-42e4-b91f-d4b45551a104")]
+// このプロジェクトが COM に公開される場合、次の GUID がタイプ ライブラリの ID になります。
+[assembly: Guid("cb52ad04-d052-4c01-95c8-fcb2f2c9a4c1")]
 
 // アセンブリのバージョン情報は、以下の 4 つの値で構成されています:
 //
@@ -31,7 +29,7 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-// すべての値を指定するか、下のように '*' を使ってビルドおよびリビジョン番号を 
+// すべての値を指定するか、以下のように '*' を使用してビルド番号とリビジョン番号を 
 // 既定値にすることができます:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]

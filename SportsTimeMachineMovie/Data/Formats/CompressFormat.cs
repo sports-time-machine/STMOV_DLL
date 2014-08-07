@@ -14,13 +14,25 @@ namespace SportsTimeMachine.Data.Formats
 		/// <summary>
 		/// フレーム情報の幅.
 		/// </summary>
-		public const int WIDTH = 640;
+        public int Width { get; private set; }
 		
 		/// <summary>
 		/// フレーム情報の高さ.
 		/// </summary>
-		public const int HEIGHT = 480;
-	
+        public int Height { get; private set; }
+
+        /// <summary>
+        /// フレーム情報の幅と高さを指定して構築する.
+        /// </summary>
+        public CompressFormat(int width, int height)
+        {
+            if (width <= 0 || height <= 0)
+                throw new ArgumentException("フレーム情報の幅と高さは0以下の値を指定することはできません.");
+            
+            Width = width;
+            Height = height;
+        }
+
 		/// <summary>
 		/// フォーマットの名称を取得する.
 		/// </summary>
