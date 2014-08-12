@@ -51,7 +51,6 @@
     <Compile Include="Data\Formats\FormatFactory.cs" />
     <Compile Include="Data\Tracks\CompleteEventArgs.cs" />
     <Compile Include="Data\Tracks\Track.cs" />
-    <Compile Include="Data\Tracks\TrackPointCloud.cs" />
     <Compile Include="Data\Tracks\ProgressEventArgs.cs" />
     <Compile Include="Data\Units\Unit.cs" />
     <Compile Include="Data\Status\CameraStatus.cs" />

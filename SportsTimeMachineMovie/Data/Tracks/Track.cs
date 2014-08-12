@@ -60,32 +60,5 @@ namespace SportsTimeMachine.Data.Tracks
             }
             return pointClouds;
         }
-
-        /// <summary>
-        /// 指定したフレームのトラックの点群データを取得する.
-        /// </summary>
-        /// <returns></returns>
-        public List<Vector3> GetTrackPointCloud(int frame)
-        {
-            List<UnitPointCloud> unitsPointClouds = GetUnitsPointCloud(frame);
-            List<Vector3> trackPointCloud = new List<Vector3>();
-
-            for (int i = 0; i < MAX_UNIT; i++)
-            {
-                if (unitsPointClouds[i] != null)
-                {
-                    for (int j = 0; j < unitsPointClouds[i].VectorList.Count; j++)
-                    {
-                        Vector3 vec = unitsPointClouds[i].VectorList[j];
-                        vec.x += i * 320.0f;
-                        trackPointCloud.Add(vec);
-                    }
-                }
-            }
-
-            return trackPointCloud;
-        }
-
-
     }
 }
