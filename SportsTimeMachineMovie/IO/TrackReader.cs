@@ -99,8 +99,8 @@ namespace SportsTimeMachine.IO
                 }
             }
 
-            Track movie = new Track(units);
-            ReadCompleted(this, new CompleteEventArgs(movie));   
+            Track track = new Track(units);
+            ReadCompleted(this, new CompleteEventArgs(track));   
         }
 
         public void Dispose()

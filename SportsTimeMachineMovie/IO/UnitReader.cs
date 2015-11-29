@@ -54,7 +54,12 @@ namespace SportsTimeMachine.IO
         /// <returns>ユニットデータ.</returns>
         public Unit Read()
         {
-            FileStatus fileStatus = new FileStatus(ReadSignature(), ReadVersion());
+            // シグネチャが「SPTM 」でなければスポーツタイムマシン形式でないので例外を発生させる.
+            String signgature = ReadSignature();
+            if (!signgature.Equals("SPTM "))
+                throw new Exception.SptmException("ファイルがスポーツタイムマシン形式ではありません。");
+
+            FileStatus fileStatus = new FileStatus(signgature, ReadVersion());
             UnitStatus movieStatus = new UnitStatus(ReadTotalFrames(), ReadTotalMilliSeconds());
             List<FrameData> frames = ReadFrames();
 
@@ -228,7 +233,6 @@ namespace SportsTimeMachine.IO
 				byte[] voxcelSizeBuffer = new byte[sizeof(Int32)];
 				stream.Read(voxcelSizeBuffer, 0, sizeof(Int32));
 				Int32 voxcelSize = BitConverter.ToInt32(voxcelSizeBuffer, 0);
-
 
 				// フレームデータ.
 				byte[] voxcelDataBuffer = new byte[voxcelSize];

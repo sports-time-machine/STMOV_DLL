@@ -61,6 +61,7 @@
     <Compile Include="Data\Status\FileStatus.cs" />
     <Compile Include="Data\Status\UnitStatus.cs" />
     <Compile Include="Data\Units\UnitPointCloud.cs" />
+    <Compile Include="Exception\SptmException.cs" />
     <Compile Include="IO\TrackReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IO\UnitReader.cs" />
