@@ -1,4 +1,5 @@
 ﻿using SportsTimeMachine.Data.Commons;
+using SportsTimeMachine.Data.Formats;
 using SportsTimeMachine.Data.Frames;
 using SportsTimeMachine.Data.Status;
 using SportsTimeMachine.IO;
@@ -19,47 +20,37 @@ namespace SportsTimeMachine.Data.Units
         /// <summary>
         /// フレーム情報.
         /// </summary>
-        private List<FrameData> frames;
+        public List<FrameData> Frames { get; private set; }
 
         /// <summary>
         /// ファイル情報.
         /// </summary>
-        private FileStatus fileStatus;
+        public FileStatus FileStatus { get; private set; }
 
         /// <summary>
         /// ムービー情報.
         /// </summary>
-        private UnitStatus movieStatus;
+        public UnitStatus MovieStatus { get; private set; }
 
         /// <summary>
-        /// 総フレーム数を取得する.
+        /// 圧縮形式.
         /// </summary>
-        public int TotalFrame { get { return movieStatus.TotalFrameCount; } }
-
-        /// <summary>
-        /// 総時間(ミリ秒)を取得する.
-        /// </summary>
-        public int TotalTime { get { return movieStatus.TotalTime; } }
-
-        /// <summary>
-        /// シグネチャを取得する.
-        /// </summary>
-        public String Signature { get { return fileStatus.Signature; } }
-
-        /// <summary>
-        /// バージョンを取得する.
-        /// </summary>
-        public String Version { get { return fileStatus.Version; } }
+        public CompressFormat CompressFormat { get; private set; }
 
 		/// <summary>
-        /// フレームリスト、ファイル情報、ムービー情報から構築する.
+        /// フレームリスト
+        /// ファイル情報
+        /// ムービー情報
+        /// 圧縮形式
+        /// から構築する.
 		/// </summary>
 		/// <param name="stream">ストリーム.</param>
-		internal Unit (List<FrameData> frames, FileStatus fileStatus, UnitStatus movieStatus)
+		public Unit (List<FrameData> frames, FileStatus fileStatus, UnitStatus movieStatus, CompressFormat format)
 		{
-            this.frames = frames;
-            this.fileStatus = fileStatus;
-            this.movieStatus = movieStatus;
+            this.Frames = frames;
+            this.FileStatus = fileStatus;
+            this.MovieStatus = movieStatus;
+            this.CompressFormat = format;
 		}
 
         /// <summary>
@@ -70,8 +61,8 @@ namespace SportsTimeMachine.Data.Units
         public UnitPointCloud GetUnitPointCloud(int frame)
         {
             if (frame < 0) return null;
-            if (frame >= frames.Count) return null;
-            UnitPointCloud pointCloud = frames[frame].GetUnitPointCloud();
+            if (frame >= Frames.Count) return null;
+            UnitPointCloud pointCloud = Frames[frame].GetUnitPointCloud();
             return pointCloud;
         }
     }

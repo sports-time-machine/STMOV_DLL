@@ -12,7 +12,7 @@ namespace SportsTimeMachine.Data.Transformer
 	/// カメラ2台で1つのスクリーンを投影させる標準的な
     /// スポーツタイムマシンの記録形式の変換を行う.
 	/// </summary>
-    internal class VoxcelTransformer
+    public class VoxcelTransformer
 	{
 		/// <summary>
 		/// 横方向解像度.

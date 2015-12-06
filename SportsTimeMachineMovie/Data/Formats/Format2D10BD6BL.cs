@@ -12,7 +12,7 @@ namespace SportsTimeMachine.Data.Formats
 	/// 各ピクセルは2バイトで表現され,ランレングス長6bit,深度値10bitで表される.
 	/// また,解凍処理を高速に行うため,深度情報のクリッピングはこのクラスで行う.
 	/// </summary>
-    internal class Format2D10BD6BL : CompressFormat
+    public class Format2D10BD6BL : CompressFormat
 	{
 		/// <summary>
 		/// ニアクリップ.
@@ -77,7 +77,7 @@ namespace SportsTimeMachine.Data.Formats
 		/// </summary>
 		/// <returns>The format name.</returns>
 		public override String GetName(){
-			return "depth 2d 10b/6b";
+			return "depth 2d 10b/6b ";
 		}
 
 		/// <summary>

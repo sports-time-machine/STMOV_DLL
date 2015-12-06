@@ -8,7 +8,7 @@ namespace SportsTimeMachine.Data.Status
     /// <summary>
     /// ユニット関連の情報を格納するクラス.
     /// </summary>
-    internal class UnitStatus
+    public class UnitStatus
     {
 
         public int TotalFrameCount { get; private set; }

@@ -8,7 +8,7 @@ namespace SportsTimeMachine.Data.Formats
 	/// 深度情報圧縮フォーマットの抽象クラス.
 	/// 深度情報圧縮フォーマットのクラスを作成する際はこれを継承する.
 	/// </summary>
-    internal abstract class CompressFormat
+    public abstract class CompressFormat
 	{
 
 		/// <summary>

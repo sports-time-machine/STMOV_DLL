@@ -7,9 +7,8 @@ namespace SportsTimeMachine.Data.Status
 	/// <summary>
 	/// ユニットに備え付けられたカメラの位置,回転,拡縮情報を扱う.
 	/// </summary>
-    internal class CameraStatus
+    public class CameraStatus
 	{
-
 		/// <summary>
 		/// 位置情報を取得する.
 		/// </summary>

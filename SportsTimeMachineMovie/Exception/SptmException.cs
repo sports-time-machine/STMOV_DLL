@@ -8,7 +8,7 @@ namespace SportsTimeMachine.Exception
     /// <summary>
     /// スポーツタイムマシンでの例外を扱う.
     /// </summary>
-    internal class SptmException : System.Exception
+    public class SptmException : System.Exception
     {
         public SptmException() : base() { }
         public SptmException(string message) : base(message) { }

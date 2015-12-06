@@ -20,28 +20,28 @@ namespace SportsTimeMachine.Data.Tracks
         /// <summary>
         /// 総フレーム数を取得する.
         /// </summary>
-        public int TotalFrame { get { return units[0].TotalFrame; } }
+        public int TotalFrame { get { return units[0].MovieStatus.TotalFrameCount; } }
 
         /// <summary>
         /// 総時間(ミリ秒)を取得する.
         /// </summary>
-        public int TotalTime { get { return units[0].TotalTime; } }
+        public int TotalTime { get { return units[0].MovieStatus.TotalTime; } }
 
         /// <summary>
         /// シグネチャを取得する.
         /// </summary>
-        public String Signature { get { return units[0].Signature; } }
+        public String Signature { get { return units[0].FileStatus.Signature; } }
 
         /// <summary>
         /// バージョンを取得する.
         /// </summary>
-        public String Version { get { return units[0].Version; } }
+        public String Version { get { return units[0].FileStatus.Version.ToString(); } }
 
         /// <summary>
         /// ユニットのリストから構築.
         /// </summary>
         /// <param name="units"></param>
-        internal Track(List<Unit> units)
+        public Track(List<Unit> units)
         {
             this.units = units;
         }

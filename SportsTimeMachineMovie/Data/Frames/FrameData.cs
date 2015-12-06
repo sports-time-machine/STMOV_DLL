@@ -13,7 +13,7 @@ namespace SportsTimeMachine.Data.Frames{
 	/// フレーム情報は圧縮された状態で格納されており,そのままでは使用することができない.
     /// GetPointCloud関数を利用することにより,フレーム情報から点群データを取得することができる.
 	/// </summary>
-    internal class FrameData 
+    public class FrameData 
 	{
 		/// <summary>
 		/// フレーム情報バイト数を取得する.

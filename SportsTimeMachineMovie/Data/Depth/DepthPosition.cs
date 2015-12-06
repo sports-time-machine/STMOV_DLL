@@ -3,23 +3,22 @@ using System;
 
 namespace SportsTimeMachine.Data.Depth
 {
-
 	/// <summary>
 	/// スクリーン上の深度情報.
 	/// </summary>
-	internal class DepthPosition
+    public class DepthPosition
 	{
 		/// <summary>
 		/// 座標を取得する.
 		/// </summary>
 		/// <value>座標</value>
-		public Vector2 Position{get; private set;}
+		public Vector2 Position{get; set;}
 
 		/// <summary>
 		/// 深度情報を取得する.
 		/// </summary>
 		/// <value>深度情報</value>
-		public int Depth{get; private set;}
+		public int Depth{get; set;}
 
 		/// <summary>
 		/// コンストラクタ.

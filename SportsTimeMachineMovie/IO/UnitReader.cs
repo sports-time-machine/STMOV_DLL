@@ -54,16 +54,17 @@ namespace SportsTimeMachine.IO
         /// <returns>ユニットデータ.</returns>
         public Unit Read()
         {
-            // シグネチャが「SPTM 」でなければスポーツタイムマシン形式でないので例外を発生させる.
+            // シグネチャが「STMV  」でなければスポーツタイムマシン形式でないので例外を発生させる.
             String signgature = ReadSignature();
-            if (!signgature.Equals("SPTM "))
+            if (!signgature.Equals("STMV  "))
                 throw new Exception.SptmException("ファイルがスポーツタイムマシン形式ではありません。");
 
             FileStatus fileStatus = new FileStatus(signgature, ReadVersion());
             UnitStatus movieStatus = new UnitStatus(ReadTotalFrames(), ReadTotalMilliSeconds());
+            CompressFormat format = ReadCompressFormat();
             List<FrameData> frames = ReadFrames();
 
-            return new Unit(frames, fileStatus, movieStatus);
+            return new Unit(frames, fileStatus, movieStatus, format);
         }
 
 		/// <summary>
@@ -85,14 +86,13 @@ namespace SportsTimeMachine.IO
 		/// バージョンを読み込む.
 		/// </summary>
 		/// <returns>バージョン</returns>
-        private String ReadVersion()
+        private SportsTimeMachine.Data.Units.Version ReadVersion()
         {
 			if (disposed) throw new ObjectDisposedException(GetType().FullName);
 
 			stream.Seek (6, SeekOrigin.Begin);
-			int majorVersion = stream.ReadByte();
-			int minorVersion = stream.ReadByte();
-			String version = majorVersion + "." + minorVersion; 
+            SportsTimeMachine.Data.Units.Version version = 
+                new Data.Units.Version(stream.ReadByte(), stream.ReadByte());
 			return version;
 		}
 
@@ -217,7 +217,7 @@ namespace SportsTimeMachine.IO
 			List<FrameData> frames = new List<FrameData>();
 
 			int totalFrames = ReadTotalFrames();
-			CompressFormat format = ReadCompressFormat ();
+			CompressFormat format = ReadCompressFormat();
 
 			VoxcelTransformer transformer = new VoxcelTransformer( ReadLeftCameraInfo(), ReadRightCameraInfo());
 

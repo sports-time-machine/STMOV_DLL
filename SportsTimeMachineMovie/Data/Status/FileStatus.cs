@@ -8,16 +8,16 @@ namespace SportsTimeMachine.Data.Status
     /// <summary>
     /// ファイル情報を格納するクラス.
     /// </summary>
-    internal class FileStatus
+    public class FileStatus
     {
         public String Signature { get; private set; }
 
-        public String Version { get; private set; }
+        public Units.Version Version { get; private set; }
 
         /// <summary>
         /// シグネチャ、バージョンを指定して構築
         /// </summary>
-        public FileStatus(string signature, string version)
+        public FileStatus(string signature, Units.Version version)
         {
             Signature = signature;
             Version = version;

@@ -6,7 +6,7 @@ namespace SportsTimeMachine.Data.Depth
 	/// <summary>
 	/// カメラが投影されるスクリーン上の深度情報を表す.
 	/// </summary>
-    internal class DepthScreen
+    public class DepthScreen
 	{
 		/// <summary>
 		/// スクリーン横解像度.
@@ -16,7 +16,7 @@ namespace SportsTimeMachine.Data.Depth
 		/// <summary>
 		/// スクリーン縦解像度.
 		/// </summary>
-		public int Height {get; private set;}	
+        public int Height { get; private set; }	
 
 		/// <summary>
 		/// 深度情報のリスト.

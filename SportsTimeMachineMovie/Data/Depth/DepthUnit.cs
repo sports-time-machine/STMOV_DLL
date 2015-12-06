@@ -8,7 +8,7 @@ namespace SportsTimeMachine.Data.Depth
 	/// 1Unitの深度情報を表すクラス.
 	/// 1Unitには2Screenある.
 	/// </summary>
-    internal class DepthUnit
+    public class DepthUnit
 	{
 		/// <summary>
 		/// 左スクリーン深度情報を取得する.

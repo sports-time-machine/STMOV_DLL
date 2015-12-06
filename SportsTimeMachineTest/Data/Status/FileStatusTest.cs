@@ -14,12 +14,12 @@ namespace SportsTimeMachineTest.Data.Status
         public void ConstactorTest01()
         {
             string signature = "STMOV";
-            string version = "1.0";
+            SportsTimeMachine.Data.Units.Version version = new SportsTimeMachine.Data.Units.Version(1, 0);
 
             FileStatus file = new FileStatus(signature, version);
 
             Assert.AreEqual("STMOV", signature);
-            Assert.AreEqual("1.0", version);   
+            Assert.AreEqual("1.0", version.ToString());   
         }
     }
 }

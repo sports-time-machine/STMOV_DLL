@@ -6,7 +6,7 @@ namespace SportsTimeMachine.Data.Formats
 	/// <summary>
 	/// フォーマットを表す文字列から圧縮フォーマットクラスを取得可能な静的クラス.
 	/// </summary>
-    static internal class FormatFactory
+    static public class FormatFactory
 	{
 
 		/// <summary>

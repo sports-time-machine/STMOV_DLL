@@ -16,7 +16,7 @@ namespace SportsTimeMachine.Data.Units
         /// </summary>
         public List<Vector3> VectorList { get; private set; }
 
-        internal UnitPointCloud(List<Vector3> pointCloud)
+        public UnitPointCloud(List<Vector3> pointCloud)
         {
             VectorList = pointCloud;
         }
