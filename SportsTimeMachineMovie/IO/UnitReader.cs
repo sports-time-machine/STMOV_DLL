@@ -54,24 +54,27 @@ namespace SportsTimeMachine.IO
         /// <returns>ユニットデータ.</returns>
         public Unit Read()
         {
-            // シグネチャが「STMV  」でなければスポーツタイムマシン形式でないので例外を発生させる.
-            String signgature = ReadSignature();
-            if (!signgature.Equals("STMV  "))
-                throw new Exception.SptmException("ファイルがスポーツタイムマシン形式ではありません。");
+            FileStatus status = new FileStatus(
+                ReadSignature(),
+                ReadVersion(),
+                ReadTotalFrames(),
+                ReadTotalMilliSeconds(),
+                ReadCompressFormat(), 
+                ReadLeftCameraInfo(),
+                ReadRightCameraInfo(),
+                ReadDotSize()
+            );
 
-            FileStatus fileStatus = new FileStatus(signgature, ReadVersion());
-            UnitStatus movieStatus = new UnitStatus(ReadTotalFrames(), ReadTotalMilliSeconds());
-            CompressFormat format = ReadCompressFormat();
-            List<FrameData> frames = ReadFrames();
+            List<FrameData> frames = ReadFrames(status);
 
-            return new Unit(frames, fileStatus, movieStatus, format);
+            return new Unit(frames, status);
         }
 
 		/// <summary>
 		/// シグネチャを読み込む.
 		/// </summary>
 		/// <returns>シグネチャ.</returns>
-		private String ReadSignature()
+		private Signature ReadSignature()
         {
 			if (disposed) throw new ObjectDisposedException(GetType().FullName);
 
@@ -79,7 +82,7 @@ namespace SportsTimeMachine.IO
 			byte[] bytes = new byte[6];
 			stream.Read (bytes, 0, 6);
 			String signature = Encoding.ASCII.GetString (bytes);
-			return signature;
+			return new Signature(signature);
 		}
 
 		/// <summary>
@@ -206,21 +209,35 @@ namespace SportsTimeMachine.IO
 			return info;
 		}
 
-		/// <summary>
-		/// すべてのフレーム情報を読み込む.
-		/// </summary>
-		/// <returns>フレーム情報のリスト</returns>
-        private List<FrameData> ReadFrames()
+        /// <summary>
+        /// ドットサイズ読み込み.
+        /// </summary>
+        /// <returns>ドットサイズ</returns>
+        private float ReadDotSize()
+        {
+            if (disposed) throw new ObjectDisposedException(GetType().FullName);
+            stream.Seek(104, SeekOrigin.Begin);
+            byte[] bytes = new byte[sizeof(float)];
+            stream.Read(bytes, 0, sizeof(float));
+            float dotSize = BitConverter.ToSingle(bytes, 0);
+            Console.WriteLine("test:" + dotSize);
+            return dotSize;
+        }
+
+        /// <summary>
+        /// すべてのフレーム情報を読み込む.
+        /// </summary>
+        /// <param name="fileStatus"></param>
+        /// <returns>フレーム情報のリスト</returns>
+        private List<FrameData> ReadFrames(FileStatus fileStatus)
         {
 			if (disposed) throw new ObjectDisposedException(GetType().FullName);
 
 			List<FrameData> frames = new List<FrameData>();
 
-			int totalFrames = ReadTotalFrames();
-			CompressFormat format = ReadCompressFormat();
-
-			VoxcelTransformer transformer = new VoxcelTransformer( ReadLeftCameraInfo(), ReadRightCameraInfo());
-
+			int totalFrames = fileStatus.TotalFrames;
+            CompressFormat format = fileStatus.CompressFormat;
+			
 			stream.Seek (108, SeekOrigin.Begin);
 
 			for (int i=0; i < totalFrames ; i++) 
@@ -238,7 +255,7 @@ namespace SportsTimeMachine.IO
 				byte[] voxcelDataBuffer = new byte[voxcelSize];
 				stream.Read(voxcelDataBuffer, 0, voxcelSize);
 
-				frames.Add(new FrameData(voxcelDataBuffer, format, transformer));
+				frames.Add(new FrameData(voxcelDataBuffer));
 			}
 
 			return frames;

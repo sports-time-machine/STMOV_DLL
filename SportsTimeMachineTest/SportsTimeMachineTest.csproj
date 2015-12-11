@@ -62,7 +62,6 @@
     <Compile Include="Data\Frames\FrameDataTest.cs" />
     <Compile Include="Data\Status\CameraStatusTest.cs" />
     <Compile Include="Data\Status\FileStatusTest.cs" />
-    <Compile Include="Data\Status\UnitStatusTest.cs" />
     <Compile Include="Data\Units\UnitTest.cs" />
     <Compile Include="IO\UnitReaderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

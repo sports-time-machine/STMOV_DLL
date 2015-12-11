@@ -1,5 +1,6 @@
 using SportsTimeMachine.Data.Commons;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace SportsTimeMachine.Data.Status
@@ -27,8 +28,18 @@ namespace SportsTimeMachine.Data.Status
 		/// <value>拡縮.</value>
 		public Vector3 Scale{ get; private set; }
 
+        /// <summary>
+        /// 既定のカメラ情報を構築する
+        /// </summary>
+        public CameraStatus()
+        {
+            Position = new Vector3(0, 0, 0);
+            Rotation = new Vector3(0, 0, 0);
+            Scale = new Vector3(0, 0, 0);
+        }
+
 		/// <summary>
-		/// コンストラクタ.
+		/// カメラの位置、回転、拡縮を指定して構築する
 		/// </summary>
 		/// <param name="pos">位置.</param>
 		/// <param name="rotate">回転.</param>
@@ -107,6 +118,41 @@ namespace SportsTimeMachine.Data.Status
                     ) * mat;
 			return mat;
 		}
+
+        public byte[] ToBytes()
+        {
+            List<byte> bytes = new List<byte>();
+
+            byte[] xBytes = new byte[sizeof(float)];
+            byte[] yBytes = new byte[sizeof(float)];
+            byte[] zBytes = new byte[sizeof(float)];
+
+            xBytes = BitConverter.GetBytes(Position.x);
+            yBytes = BitConverter.GetBytes(Position.y);
+            zBytes = BitConverter.GetBytes(Position.z);
+
+            bytes.AddRange(xBytes);
+            bytes.AddRange(yBytes);
+            bytes.AddRange(zBytes);
+
+            xBytes = BitConverter.GetBytes(Rotation.x);
+            yBytes = BitConverter.GetBytes(Rotation.y);
+            zBytes = BitConverter.GetBytes(Rotation.z);
+
+            bytes.AddRange(xBytes);
+            bytes.AddRange(yBytes);
+            bytes.AddRange(zBytes);
+
+            xBytes = BitConverter.GetBytes(Scale.x);
+            yBytes = BitConverter.GetBytes(Scale.y);
+            zBytes = BitConverter.GetBytes(Scale.z);
+
+            bytes.AddRange(xBytes);
+            bytes.AddRange(yBytes);
+            bytes.AddRange(zBytes);
+
+            return bytes.ToArray();
+        }
 	}
 }
 

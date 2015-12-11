@@ -52,6 +52,7 @@
     <Compile Include="Data\Tracks\CompleteEventArgs.cs" />
     <Compile Include="Data\Tracks\Track.cs" />
     <Compile Include="Data\Tracks\ProgressEventArgs.cs" />
+    <Compile Include="Data\Units\Signature.cs" />
     <Compile Include="Data\Units\Unit.cs" />
     <Compile Include="Data\Status\CameraStatus.cs" />
     <Compile Include="Data\Depth\DepthPosition.cs" />
@@ -59,8 +60,6 @@
     <Compile Include="Data\Depth\DepthUnit.cs" />
     <Compile Include="Data\Frames\FrameData.cs" />
     <Compile Include="Data\Status\FileStatus.cs" />
-    <Compile Include="Data\Status\UnitStatus.cs" />
-    <Compile Include="Data\Units\UnitPointCloud.cs" />
     <Compile Include="Data\Units\Version.cs" />
     <Compile Include="Exception\SptmException.cs" />
     <Compile Include="IO\TrackReader.cs" />

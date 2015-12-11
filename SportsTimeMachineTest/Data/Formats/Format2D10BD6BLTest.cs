@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SportsTimeMachine.Data.Formats;
 using SportsTimeMachine.Data.Depth;
 using SportsTimeMachine.Data.Commons;
+using SportsTimeMachine.Data.Frames;
 
 namespace SportsTimeMachineTest.Data.Formats
 {
@@ -93,7 +94,7 @@ namespace SportsTimeMachineTest.Data.Formats
         {
             CompressFormat compress = new Format2D10BD6BL();
 
-            Assert.AreEqual("depth 2d 10b/6b", compress.GetName());
+            Assert.AreEqual("depth 2d 10b/6b ", compress.GetName());
         }
 
         /// <summary>
@@ -114,8 +115,9 @@ namespace SportsTimeMachineTest.Data.Formats
             // 1,8  = 000010(3)|0000000001(1) = ラン(2+1)=3レングス(1)9
             // 0,3  = 000000(3)|1100000000(768) = ラン(0+1)=1レングス(768)7506
             byte[] bytes = {0,11,1,0,1,8,0,3};
+            FrameData frameData = new FrameData(bytes);
 
-            DepthUnit depth = compress.Decompress(bytes);
+            DepthUnit depth = compress.Decompress(frameData);
 
 
             Assert.AreEqual(new Vector2(0.0f,0.0f), depth.LeftScreen.DepthList[0].Position);
@@ -159,8 +161,9 @@ namespace SportsTimeMachineTest.Data.Formats
             // 0,8  = 000010(3)|0000000000(0) = ラン(2+1)=3レングス(0)0(無視される)
             // 0,3  = 000000(3)|1100000000(768) = ラン(0+1)=1レングス(768)7506
             byte[] bytes = { 0, 11, 0, 0, 0, 8, 0, 3 };
+            FrameData frameData = new FrameData(bytes);
 
-            DepthUnit depth = compress.Decompress(bytes);
+            DepthUnit depth = compress.Decompress(frameData);
 
             // 左スクリーンの(1,1)はクリッピング領域外なので無視される.
             Assert.AreEqual(3, depth.LeftScreen.DepthList.Count);
@@ -180,6 +183,55 @@ namespace SportsTimeMachineTest.Data.Formats
             Assert.AreEqual(new Vector2(1.0f, 1.0f), depth.RightScreen.DepthList[0].Position);
             Assert.AreEqual(7506, depth.RightScreen.DepthList[0].Depth);
         }
+
+        // 圧縮時に情報の劣化が起こる？
+        /// <summary>
+        /// フレーム情報を圧縮できること.
+        /// </summary>
+        //[TestMethod]
+        //public void CompressTest01()
+        //{
+        //    // テストのため、フレームを2*2にする.
+        //    CompressFormat compress = new Format2D10BD6BL(2, 2);
+
+        //    // バイト情報.リトルエンディアンなので2バイト読み込むときは
+        //    // 0,11は00001011(11)|00000000(0)となることに注意.
+        //    // 左スクリーン.
+        //    // 0,11 = 000010(3)|1100000000(768) = ラン(2+1)=3レングス(768)7506
+        //    // 1,0  = 000000(0)|0000000001(1) = ラン(0+1)=1レングス(1)9
+        //    // 右スクリーン.
+        //    // 1,8  = 000010(3)|0000000001(1) = ラン(2+1)=3レングス(1)9
+        //    // 0,3  = 000000(3)|1100000000(768) = ラン(0+1)=1レングス(768)7506
+        //    DepthUnit unit = new DepthUnit(2, 2);
+
+        //    DepthPosition depthPosition = new DepthPosition(new Vector2(0.0f, 0.0f), 7506);
+        //    unit.LeftScreen.DepthList.Add(depthPosition);
+
+        //    depthPosition = new DepthPosition(new Vector2(1.0f, 0.0f), 7506);
+        //    unit.LeftScreen.DepthList.Add(depthPosition);
+
+        //    depthPosition = new DepthPosition(new Vector2(0.0f, 1.0f), 7506);
+        //    unit.LeftScreen.DepthList.Add(depthPosition);
+
+        //    depthPosition = new DepthPosition(new Vector2(1.0f, 1.0f), 9);
+        //    unit.LeftScreen.DepthList.Add(depthPosition);
+
+        //    depthPosition = new DepthPosition(new Vector2(0.0f, 0.0f), 9);
+        //    unit.RightScreen.DepthList.Add(depthPosition);
+
+        //    depthPosition = new DepthPosition(new Vector2(1.0f, 0.0f), 9);
+        //    unit.RightScreen.DepthList.Add(depthPosition);
+
+        //    depthPosition = new DepthPosition(new Vector2(0.0f, 1.0f), 9);
+        //    unit.RightScreen.DepthList.Add(depthPosition);
+
+        //    depthPosition = new DepthPosition(new Vector2(1.0f, 1.0f), 7506);
+        //    unit.RightScreen.DepthList.Add(depthPosition);
+
+        //    byte[] bytes = { 0, 11, 1, 0, 1, 8, 0, 3 };
+
+        //    Assert.AreEqual(bytes.Length, compress.Compress(unit).Size);
+        //}
 
     }
 }
